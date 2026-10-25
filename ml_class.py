@@ -11,7 +11,7 @@ from sklearn.preprocessing import OneHotEncoder
 # imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
 
 
-# dataset = pd.read_csv('Data.csv')
+dataset = pd.read_csv('Data.csv')
 # x = dataset.iloc[ :, :-1].values
 # y = dataset.iloc[ :, -1].values
 
@@ -24,17 +24,20 @@ from sklearn.preprocessing import OneHotEncoder
 # print(x[:, 1:3])
 # # print(y)
 
-dataset = pd.read_csv('pima-indians-diabetes.csv')
+# dataset = pd.read_csv('pima-indians-diabetes.csv')
 
 x = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 
-imputer = SimpleImputer(missing_values=0, strategy='mean')
-imputer.fit(x[:, 1:6])
+imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
+# imputer.fit(x[:, 1:6])
 
-x[:, 1:6] = imputer.transform(x[:, 1:6])
+# x[:, 1:6] = imputer.transform(x[:, 1:6])
 
-print(x[:, 1:6])
+# print(x[:, 1:6])
 
 #OneHotEncoder
-ct = ColumnTransformer(transformers=, remainder=)
+ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [0] )], remainder='passthrough')
+x = np.array(ct.fit_transform(x))
+ 
+print(x)
